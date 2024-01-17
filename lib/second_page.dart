@@ -99,7 +99,7 @@ class SecondPage extends StatelessWidget {
                     padding: EdgeInsets.all(8.0),
                     child: Text(
                       "आपका फ़ोन लॉक हो गया है क्योंकि आपने नियत तिथि तक अपनी किस्त का भुगतान नहीं किया है। अपने फोन को अनलॉक करने के लिए, अनिल डॉलर, डोलर इन्फोटेक, नीमच को कॉल करें  \n\n"
-                      "Your Phone has been locked as you didn't repay your installment by the due date. To unlock your Phone, call ANIL DOLLOR, DOLLOR INFOTECH, Neemuch.",
+                      "Your Phone has been locked as you didn't repay your installment by the due date. To unlock your Phone, call Anil Dollor, Dollor Infotech, Neemuch.",
                       style: TextStyle(
                         fontSize: 25,
                         fontWeight: FontWeight.bold,
@@ -119,7 +119,7 @@ class SecondPage extends StatelessWidget {
                       // Start speaking only if TTS is not already in progress
                       isSpeaking = true;
                       await speakText(
-                        "आपका फ़ोन लॉक हो गया है क्योंकि आपने नियत तिथि तक अपनी किस्त का भुगतान नहीं किया है। अपने फोन को अनलॉक करने के लिए, अनिल डॉलर, डोलर इन्फोटेक, नीमच को कॉल करें\n\nYour Phone has been locked as you didn't repay your installment by the due date. To unlock your Phone, call ANIL DOLLOR, DOLLOR INFOTECH, Neemuch.",
+                        "आपका फ़ोन लॉक हो गया है क्योंकि आपने नियत तिथि तक अपनी किस्त का भुगतान नहीं किया है। अपने फोन को अनलॉक करने के लिए, अनिल डॉलर, डोलर इन्फोटेक, नीमच को कॉल करें\n\nYour Phone has been locked as you didn't repay your installment by the due date. To unlock your Phone, call Anil Dollor, Dollor Infotech, Neemuch.",
                       );
                       isSpeaking = false; // Reset the flag after speaking is done
                     }
