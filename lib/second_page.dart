@@ -5,14 +5,28 @@ import 'package:flutter/material.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 
-class SecondPage extends StatelessWidget {
-  FlutterTts flutterTts = FlutterTts();
+class SecondPage extends StatefulWidget {
+  @override
+  _SecondPageState createState() => _SecondPageState();
+}
 
+class _SecondPageState extends State<SecondPage> {
+  FlutterTts flutterTts = FlutterTts();
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance!.addPostFrameCallback((_) {
+      // This callback is called after the widget is rendered on the screen
+      speakText(
+        "आपका फ़ोन लॉक हो गया है क्योंकि आपने नियत तिथि तक अपनी किस्त का भुगतान नहीं किया है। अपने फोन को अनलॉक करने के लिए, अनिल डॉलर, डोलर इन्फोटेक, नीमच को कॉल करें \n Your Phone has been locked as you didn't repay your installment by the due date. To unlock your Phone, call Anil Dollor, Dollor Infotech, Neemuch.",
+      );
+    });
+  }
   Future<void> speakText(String text) async {
-  await flutterTts.setLanguage("hi-IN"); // Set the language to Hindi
-  await flutterTts.setSpeechRate(0.5); // Adjust the speech rate as needed
-  await flutterTts.setPitch(1.0); // Adjust the pitch as needed
-  Completer<void> completer = Completer<void>();
+    await flutterTts.setLanguage("hi-IN"); // Set the language to Hindi
+    await flutterTts.setSpeechRate(0.5); // Adjust the speech rate as needed
+    await flutterTts.setPitch(1.0); // Adjust the pitch as needed
+    Completer<void> completer = Completer<void>();
 
     flutterTts.setCompletionHandler(() {
       if (!completer.isCompleted) {
@@ -113,40 +127,6 @@ class SecondPage extends StatelessWidget {
               ),
 
               // Text to Speak Code
-              const SizedBox(height: 16.0),
-                ElevatedButton(
-                  onPressed: () async {
-                    if (!isSpeaking) {
-                      // Start speaking only if TTS is not already in progress
-                      isSpeaking = true;
-                      await speakText(
-                        "आपका फ़ोन लॉक हो गया है क्योंकि आपने नियत तिथि तक अपनी किस्त का भुगतान नहीं किया है। अपने फोन को अनलॉक करने के लिए, अनिल डॉलर, डोलर इन्फोटेक, नीमच को कॉल करें\n\nYour Phone has been locked as you didn't repay your installment by the due date. To unlock your Phone, call Anil Dollor, Dollor Infotech, Neemuch.",
-                      );
-                      isSpeaking = false; // Reset the flag after speaking is done
-                    }
-                  },
-                  child: Container(
-                    // ... button styling ...
-                    child: const Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          SizedBox(width: 8.0),
-                          Text(
-                            "Speak",
-                            style: TextStyle(
-                              fontSize: 25,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.blue,
-                            ),
-                            textAlign: TextAlign.center,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
               const SizedBox(height: 16.0),
               Center(
                 child: Container(
