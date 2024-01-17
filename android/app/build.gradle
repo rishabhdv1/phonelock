@@ -42,7 +42,8 @@ android {
 
     defaultConfig {
         applicationId "com.dolfinsecure"
-        minSdkVersion flutter.minSdkVersion
+        // minSdkVersion flutter.minSdkVersion
+        minSdkVersion 21 //RSB
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName

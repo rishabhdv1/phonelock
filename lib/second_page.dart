@@ -1,17 +1,31 @@
 // second_page.dart
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 
 class SecondPage extends StatelessWidget {
   FlutterTts flutterTts = FlutterTts();
+  Timer? ttsTimer;
 
   Future<void> speakText(String text) async {
-  await flutterTts.setLanguage("hi-IN"); // Set the language to Hindi
-  await flutterTts.setSpeechRate(0.5); // Adjust the speech rate as needed
-  await flutterTts.setPitch(1.0); // Adjust the pitch as needed
-  await flutterTts.speak(text);
-}
+    await flutterTts.setLanguage("hi-IN");
+    await flutterTts.setSpeechRate(0.5);
+    await flutterTts.setPitch(1.0);
+    await flutterTts.speak(text);
+  }
+
+  void startTTSLoop(String textToSpeak) {
+    ttsTimer = Timer.periodic(Duration(seconds: 10), (timer) {
+      speakText(textToSpeak);
+    });
+  }
+
+  void stopTTSLoop() {
+    if (ttsTimer != null && ttsTimer!.isActive) {
+      ttsTimer!.cancel();
+    }
+  }
 
   final TextEditingController _numberCtrl = TextEditingController(text: "9797845448");
   @override
@@ -96,14 +110,14 @@ class SecondPage extends StatelessWidget {
               ),
 
               // Text to Speak Code
-
+              const SizedBox(height: 16.0),
               ElevatedButton(
                   onPressed: () async {
-                    await speakText(
-                      "आपका फ़ोन लॉक हो गया है क्योंकि आपने नियत तिथि तक अपनी किस्त का भुगतान नहीं किया है। अपने फोन को अनलॉक करने के लिए, अनिल डॉलर, डोलर इन्फोटेक, नीमच को कॉल करें\n\nYour Phone has been locked as you didn't repay your installment by the due date. To unlock your Phone, call ANIL DOLLOR, DOLLOR INFOTECH, Neemuch.",
+                    // Start the TTS loop when the "Speak" button is pressed
+                    startTTSLoop(
+                      "आपका फ़ोन लॉक हो गया है क्योंकि आपने नियत तिथि तक अपनी किस्त का भुगतान नहीं किया है। अपने फोन को अनलॉक करने के लिए, अनिल डॉलर, डोलर इन्फोटेक, नीमच को कॉल करें\n\n"
+                          "Your Phone has been locked as you didn't repay your installment by the due date. To unlock your Phone, call ANIL DOLLOR, DOLLOR INFOTECH, Neemuch.",
                     );
-                    // FlutterPhoneDirectCaller.callNumber(_numberCtrl.text);
-                    FlutterTts flutterTts = FlutterTts();
                   },
                   child: Container(
                     // ... button styling ...
@@ -112,18 +126,13 @@ class SecondPage extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(
-                            Icons.call,
-                            color: Colors.red,
-                            size: 25.0,
-                          ),
                           SizedBox(width: 8.0),
                           Text(
-                            "9797845448 Call",
+                            "Speak",
                             style: TextStyle(
                               fontSize: 25,
                               fontWeight: FontWeight.bold,
-                              color: Colors.red,
+                              color: Colors.blue,
                             ),
                             textAlign: TextAlign.center,
                           ),
