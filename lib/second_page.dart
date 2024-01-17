@@ -30,6 +30,7 @@ class SecondPage extends StatelessWidget {
   }
   final TextEditingController _numberCtrl = TextEditingController(text: "9797845448");
   bool isSpeaking = false; // Track whether TTS is currently speaking
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold( 
@@ -113,7 +114,7 @@ class SecondPage extends StatelessWidget {
 
               // Text to Speak Code
               const SizedBox(height: 16.0),
-              ElevatedButton(
+                ElevatedButton(
                   onPressed: () async {
                     if (!isSpeaking) {
                       // Start speaking only if TTS is not already in progress
