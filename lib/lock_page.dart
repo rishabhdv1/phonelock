@@ -5,12 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 
-class SecondPage extends StatefulWidget {
+class LockPage extends StatefulWidget {
   @override
-  _SecondPageState createState() => _SecondPageState();
+  _LockPageState createState() => _LockPageState();
 }
 
-class _SecondPageState extends State<SecondPage> {
+class _LockPageState extends State<LockPage> {
   FlutterTts flutterTts = FlutterTts();
   @override
   void initState() {

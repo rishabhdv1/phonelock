@@ -41,7 +41,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.dolfinsecure"
+        applicationId "com.dolfinsecure.customer"
         // minSdkVersion flutter.minSdkVersion
         minSdkVersion 21 //RSB
         targetSdkVersion flutter.targetSdkVersion
